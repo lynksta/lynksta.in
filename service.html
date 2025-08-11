@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Our Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600&display=swap" 
+    rel="stylesheet"
+  />
+  <link rel="icon" href="/images/lyk.png">
+  <link rel="stylesheet" href="home.css">
+  <style>
+    body {
+      background: #000000;
+      color: #d0d0d0; /* Slightly lighter gray for better readability */
+      font-family: 'Montserrat', Arial, sans-serif;
+      min-height: 100vh;
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 48px auto 64px auto; /* Added bottom margin for breathing room */
+      padding: 32px 24px; /* Reduced side padding slightly */
+      border-radius: 28px;
+      background: rgba(25, 25, 25, 0.95); /* Slightly less transparent for better contrast */
+      box-shadow: none; /* Removed shadow for cleaner edges */
+      transition: background-color 0.3s ease;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .logo-img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      border-radius: 20px;
+      box-shadow:
+        0 0 24px rgba(230,230,230,0.25),
+        0 4px 16px rgba(50,50,50,0.4);
+      background: #181818;
+      border: 2.5px solid #ccc;
+      opacity: 0;
+      transform: scale(0.7);
+      animation: logoFadeSpin 2.3s cubic-bezier(.65,1.7,.43,.81) 0.2s forwards;
+      cursor: pointer; /* Indicate interactive */
+      transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    }
+    .logo-img:hover {
+      box-shadow: 0 0 44px #F0F0F0, 0 4px 20px 0 #53ffff7a;
+      border-color: #fff;
+      transform: scale(1.05) rotate(360deg);
+    }
+
+    @keyframes logoFadeSpin {
+      0% {
+        opacity: 0;
+        transform: scale(0.7) rotate(0deg);
+      }
+      40% {
+        opacity: 1;
+        transform: scale(1.18) rotate(300deg);
+      }
+      75% {
+        transform: scale(1) rotate(360deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(360deg);
+      }
+    }
+
+    h1 {
+      font-family: 'Orbitron', 'Montserrat', Arial, sans-serif;
+      color: #E6E8E8;
+      font-size: 3.2rem;
+      text-align: center;
+      letter-spacing: 3.5px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 28px #bbbdbdcc;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #ccccccdd;
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 48px;
+      letter-spacing: 1.8px;
+      line-height: 1.4;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Minimum width bumped for easier reading */
+      gap: 40px;
+      padding-bottom: 8px;
+    }
+
+    .service-card {
+      background: linear-gradient(115deg, #2b2b2bee 0%, #1c1c1cee 100%);
+      border-radius: 20px;
+      padding: 32px 28px 28px 28px;
+      position: relative;
+      border: 2px solid #555555;
+      box-shadow:
+        0 6px 26px rgba(192, 192, 192, 0.15),
+        0 3px 12px rgba(0,0,0,0.18);
+      transition: border-color 0.25s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      cursor: default;
+    }
+    .service-card:hover {
+      border-color: #C0C0C0;
+      box-shadow:
+        0 0 14px #C0C0C0dd,
+        0 10px 34px rgba(192,192,192,0.30),
+        0 3px 12px rgba(160,160,160,0.48);
+      transform: translateY(-8px) scale(1.05);
+    }
+
+    .service-title {
+      font-family: 'Orbitron', 'Montserrat', Arial, sans-serif;
+      font-size: 1.28rem;
+      font-weight: 700;
+      color: #e0e0e0;
+      letter-spacing: 2.6px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      text-shadow: 0 0 7px #cccccc44;
+    }
+
+    .service-desc {
+      font-size: 1.08rem;
+      color: #c2c2c2;
+      letter-spacing: 0.22px;
+      line-height: 1.55;
+      user-select: text;
+    }
+
+    /* Removed the .service-card::before pseudo-element that created the small line */
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 24px 14px;
+      }
+      .services-grid {
+        gap: 26px;
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 2.4rem;
+      }
+      .service-title {
+        font-size: 1.16rem;
+      }
+      .service-desc {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-wrapper">
+      <!-- Replace with your real logo path if needed -->
+      <img class="logo-img" src="/images/IMG-20250804-WA0042.jpg" alt="Company Logo" />
+    </div>
+    <h1>Our Services</h1>
+    <div class="subtitle">
+      Solutions to empower your business and creativity.<br />
+      Delivered with precision and futuristic design.
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-title">Figma to Webflow</div>
+        <div class="service-desc">Convert Figma designs to responsive Webflow sites.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">UI/UX Excellence</div>
+        <div class="service-desc">Engaging interfaces and intuitive experiences.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Home Automation</div>
+        <div class="service-desc">Automate your home for comfort and security.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Office Automation</div>
+        <div class="service-desc">Smart systems to boost office productivity.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">CRM Development</div>
+        <div class="service-desc">Custom CRM for sales and customer service.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Canva Creation</div>
+        <div class="service-desc">Design graphics and marketing materials.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Customized Software Development</div>
+        <div class="service-desc">Bespoke software for your business needs.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Web Development</div>
+        <div class="service-desc">Fast, secure, scalable websites &amp; apps.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Project Development</div>
+        <div class="service-desc">End-to-end project development services.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Consultancy</div>
+        <div class="service-desc">Expert advice for your tech projects.</div>
+      </div>
+    </div>
+  </div>
+  <div class="whatsapp-container">
+  <div class="whatsapp-label"> contact us now!</div>
+  <a
+    href="https://wa.me/918590962682?text=Hi%20Lynsta%20Team%2C%20I'm%20interested%20in%20your%20services"
+    class="whatsapp-float"
+    target="_blank"
+    aria-label="Chat with us on WhatsApp"
+  >
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Chat" />
+  </a>
+</div>
+
+</body>
+</html>

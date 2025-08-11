@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Service Pricing</title>
+  <link rel="icon" href="/images/lyk.png">
+  <style>
+    body {
+      background: #111;
+      color: #c0c0c0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 950px;
+      margin: 40px auto;
+      padding: 24px;
+      background: rgba(20, 20, 20, 0.92);
+      border-radius: 18px;
+      box-shadow: 0 5px 24px rgba(0, 0, 0, 0.55);
+    }
+    h1 {
+      color: #c0c0c0; /* Normal silver */
+      letter-spacing: 2px;
+      text-align: center;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+    .currency-selector {
+      text-align: right;
+      margin-bottom: 18px;
+    }
+    select {
+      border-radius: 7px;
+      padding: 5px 14px;
+      background: #222;
+      color: #a0a0a0;
+      border: 1px solid #888;
+      font-size: 1rem;
+      box-shadow: 0 1px 6px #444 inset;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      background: rgba(30, 30, 30, 0.99);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #1e222b;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    th, td {
+      padding: 13px 10px;
+      text-align: center;
+      border-bottom: 1px solid #494949;
+      font-weight: 500;
+      color: #c0c0c0; /* Normal silver text */
+    }
+    th {
+      background: linear-gradient(90deg, #a7a7a7 10%, #c0c0c0 90%);
+      color: #2a2a2a;
+      border-bottom: 2px solid #444;
+      font-size: 1.06rem;
+      font-weight: 600;
+    }
+    td.service-label {
+      font-weight: bold;
+      color: #dcdcdc;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    @media (max-width: 620px) {
+      .container {
+        padding: 8px;
+      }
+      th, td {
+        font-size: 0.92rem;
+      }
+      h1 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+  <script>
+    // INR base rates provided by user
+    const rates = {
+      INR: 1,
+      USD: 1 / 83.4,   // Example: 1 USD = 83.4 INR
+      AED: 1 / 22.7,   // Example: 1 AED = 22.7 INR
+      SAR: 1 / 22.2    // Example: 1 SAR = 22.2 INR
+    };
+
+    const services = [
+      ["Figma to Webflow", 3000],
+      ["UI/UX Excellence", 5000],
+      ["Home & Office Automation", 30000],
+      ["CRM Development", 8000],
+      ["Canva Creation", 2000],
+      ["Customized Software Development", 10000],
+      ["Web Development", 5000],
+      ["Project Development", 6000],
+      ["Consultancy (per hour)", 200]
+    ];
+
+    function formatMoney(value, currency) {
+      const symbols = { USD: "$", INR: "₹", AED: "AED ", SAR: "ر.س " };
+      let symb = symbols[currency] || "";
+      let rounded;
+      if (currency === "USD") rounded = Math.round(value);
+      else if (currency === "INR") rounded = Math.round(value / 100) * 100;
+      else if (currency === "AED" || currency === "SAR") rounded = Math.round(value / 10) * 10;
+      else rounded = Math.round(value);
+
+      return `${symb}${rounded.toLocaleString()}`;
+    }
+
+    function updatePrices() {
+      const currency = document.getElementById("currency").value;
+      const tbody = document.getElementById("pricing-tbody");
+      tbody.innerHTML = "";
+      for (const [name, inrValue] of services) {
+        const converted = inrValue * (rates[currency] || 1);
+        // Add "+" only to Home & Office Automation price
+        const priceDisplay =
+          name === "Home & Office Automation"
+            ? `${formatMoney(converted, currency)}+`
+            : `${formatMoney(converted, currency)}`;
+        tbody.innerHTML += `<tr>
+          <td class="service-label">${name}</td>
+          <td>${priceDisplay}</td>
+        </tr>`;
+      }
+    }
+    document.addEventListener("DOMContentLoaded", updatePrices);
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Service Pricing</h1>
+    <div class="currency-selector">
+      <label for="currency">Currency:</label>
+      <select id="currency" onchange="updatePrices()">
+        <option value="INR" selected>INR (₹)</option>
+        <option value="USD">USD ($)</option>
+        <option value="AED">UAE Dirham (AED)</option>
+        <option value="SAR">Saudi Riyal (ر.س)</option>
+      </select>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Service</th><th>Starting Price</th></tr>
+      </thead>
+      <tbody id="pricing-tbody">
+        <!-- Populated by JS -->
+      </tbody>
+    </table>
+    <p style="color: #d9d9d5; text-align:center; margin-top:18px; font-size:0.98rem;">
+      Rates may fluctuate according to your requirements.<br />
+      For larger projects or bundles, please request a tailored quote.
+    </p>
+  </div>
+</body>
+</html>

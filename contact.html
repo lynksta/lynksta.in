@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Lynksta IT Solutions</title>
+  <link rel="icon" href="/images/lyk.png">
+  <style>
+    /* Reset default */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000; /* pure black background */
+      color: #c0c0c0; /* silver text */
+      line-height: 1.6;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      background-color: #121212; /* subtle dark background */
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(192, 192, 192, 0.2);
+    }
+
+    h1, h2, h3 {
+      color: #ddd; /* light silver */
+      margin-bottom: 20px;
+      text-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 50px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      color: #bbb;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 25px;
+      margin-bottom: 30px;
+    }
+
+    ul li {
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+      color: #ccc;
+    }
+
+    .founders-list strong {
+      color: #eee;
+    }
+
+    .section {
+      margin-bottom: 50px;
+    }
+    
+    /* Subtle minimal silver glow for emphasis */
+    strong, h2 {
+      text-shadow: 0 0 6px rgba(192, 192, 192, 0.4);
+    }
+
+    /* Contact Section */
+    .contact {
+      background-color: #1e1e1e;
+      padding: 30px 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(192, 192, 192, 0.15);
+    }
+
+    .contact h2 {
+      margin-bottom: 25px;
+      text-align: center;
+      color: #ddd;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
+    .contact-info a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      padding-left: 30px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .contact-info a:hover,
+    .contact-info a:focus {
+      color: #fff;
+      text-shadow: 0 0 8px rgba(192, 192, 192, 0.5);
+    }
+
+    /* Modern flat SVG icons as CSS background images */
+    .contact-info a.email::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3csvg fill='silver' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath d='M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 8l8 5 8-5v-2l-8 5-8-5v2z'/%3e%3c/svg%3e");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .contact-info a.facebook::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3csvg fill='%233b5998' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath d='M22.675 0h-21.35C.592 0 0 .593 0 1.325v21.351C0 23.407.592 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.657-4.788 1.324 0 2.464.099 2.797.143v3.24l-1.92.001c-1.504 0-1.796.715-1.796 1.763v2.312h3.591l-.467 3.622h-3.124V24h6.116c.732 0 1.324-.593 1.324-1.324V1.325C24 .593 23.408 0 22.675 0z'/%3e%3c/svg%3e");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .contact-info a.whatsapp::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3csvg fill='%2325D366' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath d='M20.52 3.48A11.74 11.74 0 0012 0C5.372 0 .002 5.372 0 12c-.003 2.143.585 4.293 1.71 6.166L0 24l5.883-1.695A11.949 11.949 0 0012 24c6.628 0 12-5.372 12-12 0-3.202-1.255-6.215-3.48-8.52zm-7.8 16.8a9.917 9.917 0 01-5.383-1.6l-.39-.232-3.493.996 1.008-3.403-.254-.375a9.955 9.955 0 1114.492 1.852 9.809 9.809 0 01-6.374 2.762zM17.2 13.25c-.271-.136-1.603-.79-1.852-.881-.248-.091-.429-.136-.61.137-.182.272-.702.88-.862 1.061-.159.181-.318.204-.59.068-.271-.136-1.145-.423-2.183-1.356-.807-.718-1.35-1.604-1.508-1.877-.159-.272-.017-.419.12-.554.123-.123.271-.318.407-.477.136-.159.181-.272.272-.453.091-.181.045-.34-.023-.476-.068-.136-.61-1.47-.835-2.011-.219-.528-.441-.456-.61-.465-.159-.009-.34-.01-.52-.01s-.477.068-.729.34c-.248.272-.947.926-.947 2.256 0 1.33.97 2.618 1.106 2.8.136.181 1.91 2.918 4.631 4.087.647.28 1.15.447 1.545.573.648.209 1.238.18 1.705.11.52-.08 1.603-.653 1.828-1.285.227-.63.227-1.171.159-1.285-.068-.114-.247-.181-.518-.317z'/%3e%3c/svg%3e");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .contact-info a.instagram::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3csvg fill='%23E4405F' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath d='M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 2A3.75 3.75 0 004 7.75v8.5A3.75 3.75 0 007.75 20h8.5a3.75 3.75 0 003.75-3.75v-8.5A3.75 3.75 0 0016.25 4h-8.5zm7.75 1.5a.75.75 0 110 1.5.75.75 0 010-1.5zM12 7.25a4.75 4.75 0 110 9.5 4.75 4.75 0 010-9.5zm0 2a2.75 2.75 0 100 5.5 2.75 2.75 0 000-5.5z'/%3e%3c/svg%3e");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 10px;
+      }
+      .container {
+        padding: 30px 20px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .contact-info {
+        font-size: 1rem;
+      }
+      .contact-info a {
+        padding-left: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>About Us</h1>
+
+    <section class="section">
+      <p>
+        Welcome to <strong>Lynksta IT Solutions</strong> — a new frontier in software development and automation, launched on August 2025. Founded by a dedicated group of innovators, <strong>Thejas Sathyesh</strong>, <strong>Manu Varghese</strong>, <strong>Aswin Santosh</strong>, and <strong>Alan Paul</strong>, our company blends expertise from software development, embedded systems, AI/ML, automation engineering, and civil engineering to deliver transformative technology solutions.
+      </p>
+      <p>
+        Our platform is designed to foster tech connectivity, bridging the gap between advanced tech and practical implementation, targeting projects that revolutionize automation and software development.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Meet Our Founders</h2>
+      <ul class="founders-list">
+        <li><strong>Thejas Sathyesh</strong> – Software Developer & Automation Engineer</li>
+        <li><strong>Manu Varghese</strong> – Embedded Systems & Automation Specialist</li>
+        <li><strong>Aswin Santosh</strong> – AI & Machine Learning Engineer</li>
+        <li><strong>Alan Paul</strong> – Civil Engineer with a passion for technology integration</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>What We Do</h2>
+      <ul>
+        <li>Develop custom software solutions tailored to your unique business goals.</li>
+        <li>Design and implement advanced automation systems enhancing efficiency and precision.</li>
+        <li>Engineer embedded systems enabling next-generation IoT and smart devices.</li>
+        <li>Build AI & Machine Learning applications that turn data into actionable intelligence.</li>
+        <li>Integrate civil engineering insights for grounded and practical tech infrastructure projects.</li>
+      </ul>
+      <p>
+        Our mission is to empower clients through pioneering automation and software projects that fuel growth while simplifying complex processes.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Our Vision</h2>
+      <p>
+        We envision a future where technology seamlessly integrates into everyday both business and life, creating interconnected systems that unlock new potentials and drive innovation.
+      </p>
+      <p>
+        As we launch, we invite you to join us on this exciting journey of technological connectivity, collaboration, and transformation.
+      </p>
+    </section>
+
+    <section class="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-info">
+        <a href="mailto:linkstasolution@gmail.com" class="email" target="_blank" rel="noopener" aria-label="Email">
+          lynkstasolution@gmail.com
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61578792827368" class="facebook" target="_blank" rel="noopener" aria-label="Facebook page">
+          Lynksta It Solutions
+        </a>
+        <a href="https://wa.me/918590962682" class="whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp number">
+          +91 8590962682
+        </a>
+        <a href="https://instagram.com/yourcompany" class="instagram" target="_blank" rel="noopener" aria-label="Instagram page">
+          lynksta.in
+        </a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
